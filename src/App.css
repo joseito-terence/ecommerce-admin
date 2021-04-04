@@ -40,7 +40,25 @@
 }
 
 .content-frame {
-  height: 100vh;
+  height: calc(100vh - 48px);
+  width: calc(100vw - 200px);
   flex: 1;
   overflow: scroll
+}
+
+.content-frame table td {
+  cursor: pointer;
+}
+
+
+.thead-sticky th {
+  background-color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.tr-selected {
+  background-color: #2355ec !important; 
+  color: white;
 }

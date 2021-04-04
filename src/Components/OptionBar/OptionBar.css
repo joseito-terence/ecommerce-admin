@@ -1,0 +1,40 @@
+.optionBar {
+  height: 48px;
+  padding: .25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.optionBar__right {
+  display: flex;
+}
+
+.optionBar button {
+  font-size: 1.15rem;
+  height: 38px;
+  color: #101010;
+}
+
+.optionBar button:hover{
+  background-color: #e6e6e6;
+}
+
+.optionBar__search {
+  width: 350px;
+  position: relative;
+  margin: 0 2px;
+}
+
+.optionBar__search::before {
+  font-family: 'FontAwesome';
+  content: "\f002";
+  position: absolute;
+  top: 7px;
+  left: 12px;
+  color: #81868b;
+}
+
+.optionBar__search > input{
+  padding-left: 34px;
+}
