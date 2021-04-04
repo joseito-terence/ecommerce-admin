@@ -17,10 +17,12 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const table = document.querySelector('table');        // get ref to the table.
-    table.onclick = e => {                                // onClick event listener on the table.
-      const recordId = e.target.parentElement.id;         // get recordId.
-      dispatch(selectRecord(recordId, location.pathname.slice(1)));
+    if(location.pathname !== '/'){
+      const table = document.querySelector('table');        // get ref to the table.
+      table.onclick = e => {                                // onClick event listener on the table.
+        const recordId = e.target.parentElement.id;         // get recordId.
+        dispatch(selectRecord(recordId, location.pathname.slice(1)));
+      }
     }
   }, [dispatch, location.pathname]);                      // execute effect everytime path changes.
 
