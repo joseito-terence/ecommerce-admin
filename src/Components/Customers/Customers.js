@@ -21,6 +21,7 @@ function Customers() {
     }
   }, [dispatch]);
 
+  
   return (
     <div className='customers'>
       <table className="table table-striped">
@@ -39,7 +40,7 @@ function Customers() {
         </thead>
         <tbody>
           {customers.map(customer => (
-            <tr key={customer.uid} id={customer.uid} className={`${selection === customer.id && 'tr-selected'}`}>
+            <tr key={customer.uid} id={customer.id} className={`${selection === customer.id && 'tr-selected'}`}>
               <td>{customer.uid}</td>
               <td>{customer.id}</td>
               <td>{customer.phno}</td>

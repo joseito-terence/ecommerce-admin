@@ -23,7 +23,7 @@ function App() {
         const targetRow = e.target.parentElement
         const recordId = targetRow.id;                      // get recordId.
         dispatch(selectRecord(recordId, location.pathname.slice(1)));
-        
+
         if (location.pathname === '/products') {
           const images = targetRow.dataset.images;
           dispatch(setPrevImages(images));
