@@ -1,6 +1,7 @@
 const initialState = {
   selection: '',
   tableName: '',
+  productImages: [],
 }
 
 const reducer = (state = initialState, action) => {
@@ -16,6 +17,12 @@ const reducer = (state = initialState, action) => {
       return {
         ...state, 
         ...initialState,
+      }
+
+    case 'SET_PREVIEW_IMAGES':
+      return {
+        ...state,
+        productImages: JSON.parse(action.payload.images),
       }
 
     default: return state;

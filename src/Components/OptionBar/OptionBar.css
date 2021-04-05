@@ -10,13 +10,13 @@
   display: flex;
 }
 
-.optionBar button {
+.optionBar .optionBar__btn {
   font-size: 1.15rem;
   height: 38px;
   color: #101010;
 }
 
-.optionBar button:hover{
+.optionBar .optionBar__btn:hover{
   background-color: #e6e6e6;
 }
 

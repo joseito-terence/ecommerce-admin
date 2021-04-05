@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Switch, Route, useLocation } from 'react-router-dom';
-import { selectRecord } from './redux/actions';
+import { selectRecord, setPrevImages } from './redux/actions';
 import { useDispatch } from 'react-redux';
 import './App.css';
 import SideNav from './Components/SideNav/';
@@ -20,8 +20,14 @@ function App() {
     if(location.pathname !== '/'){
       const table = document.querySelector('table');        // get ref to the table.
       table.onclick = e => {                                // onClick event listener on the table.
-        const recordId = e.target.parentElement.id;         // get recordId.
+        const targetRow = e.target.parentElement
+        const recordId = targetRow.id;                      // get recordId.
         dispatch(selectRecord(recordId, location.pathname.slice(1)));
+        
+        if (location.pathname === '/products') {
+          const images = targetRow.dataset.images;
+          dispatch(setPrevImages(images));
+        }
       }
     }
   }, [dispatch, location.pathname]);                      // execute effect everytime path changes.

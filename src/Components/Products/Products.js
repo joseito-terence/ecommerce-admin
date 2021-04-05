@@ -41,7 +41,12 @@ function Products() {
         </thead>
         <tbody>
         {products.map(product => (
-          <tr key={product.id} id={product.id} className={`${selection === product.id && 'tr-selected'}`}>
+          <tr 
+            key={product.id} 
+            id={product.id} 
+            className={`${selection === product.id && 'tr-selected'}`}
+            data-images={JSON.stringify(product.images)}
+          >
             <td>{product.id}</td>
             <td>{product.title}</td>
             <td className='text-wrap' style={{ minWidth: '250px' }}>{product.description}</td>
