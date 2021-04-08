@@ -36,6 +36,7 @@ function Customers() {
             <th>State</th>
             <th>Country</th>
             <th>Pincode</th>
+            <th>Status</th>
           </tr>
         </thead>
         <tbody>
@@ -55,6 +56,7 @@ function Customers() {
               <td>{customer.address?.state}</td>
               <td>{customer.address?.country}</td>
               <td>{customer.address?.pincode}</td>
+              <td>{customer?.disabled ? 'disabled' : 'Active'}</td>
             </tr>
           ))}
         </tbody>

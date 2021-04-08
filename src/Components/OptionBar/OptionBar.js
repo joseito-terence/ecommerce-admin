@@ -5,9 +5,7 @@ import { deselectRecord } from '../../redux/actions';
 import './OptionBar.css';
 import Modal from '../Modal';
 import ViewImages from './ViewImages';
-import deleteProduct from '../../Utilities/deleteRecord';
-import { deleteUser, disableUser } from '../../Utilities/deleteDisableUser';
-import axios from 'axios';
+import { deleteProduct, deleteUser, disableUser, cancelOrder } from '../../Utilities';
 
 function OptionBar() {
   const { pathname } = useLocation();
@@ -32,6 +30,10 @@ function OptionBar() {
         deleteUser(selection, tableName);
         break;
       
+      case '/orders':
+        cancelOrder(selection);
+        break;
+
       default: break;
     }
   }

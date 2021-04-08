@@ -21,9 +21,10 @@ const reducer = (state = initialState, action) => {
       }
 
     case 'SET_PREVIEW_IMAGES':
+      const { images } = action.payload;
       return {
         ...state,
-        productImages: JSON.parse(action.payload.images),
+        productImages: (images?.length > 0) ? JSON.parse(images) : [],
       }
 
     case 'SET_USER_STATUS':

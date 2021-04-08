@@ -39,6 +39,7 @@ function Orders() {
             <th>Title</th>
             <th>Qty</th>
             <th>Customer Id</th>
+            <th>Status</th>
           </tr>
         </thead>
         <tbody>
@@ -49,6 +50,7 @@ function Orders() {
               <td>{order.title}</td>
               <td>{order.qty}</td>
               <td>{order.customerId}</td>
+              <td>{!order?.status ? 'Order Placed' : 'Canceled'}</td>
             </tr>
           ))}
         </tbody>
