@@ -6,6 +6,7 @@ import './OptionBar.css';
 import Modal from '../Modal';
 import ViewImages from './ViewImages';
 import deleteProduct from '../../Utilities/deleteRecord';
+import { deleteUser, disableUser } from '../../Utilities/deleteDisableUser';
 import axios from 'axios';
 
 function OptionBar() {
@@ -16,14 +17,8 @@ function OptionBar() {
   const tableName = useSelector(state => state.tableName);
   const dispatch = useDispatch();
 
-  const clearSelection = () => {
+  const clearSelection = () => {     // or delesect...
     dispatch(deselectRecord());
-  }
-
-  const deleteUser = (uid, userType) => {
-    if(window.confirm("This process can't be undone. Delete User?")){
-      axios.delete(`https://tybca-project-api.herokuapp.com/user/${uid}`, { userType });
-    }
   }
 
   const deleteRecord = () => {
@@ -41,22 +36,6 @@ function OptionBar() {
     }
   }
 
-  const disableUser = () => {
-    // confirm disable/enable
-    // make api request with axios
-    // done
-    const option = !userStatus ? 'disable' : 'enable';
-
-    if(window.confirm(`Do you want to ${option} this user?`)){
-      axios.put(`https://tybca-project-api.herokuapp.com/user/${option}`, { 
-        uid: selection,
-        userType: tableName,
-      })
-      .then(res => console.log(res))
-      .catch(err => console.log(err));
-    }
-  }
-
   return (
     <div className='optionBar'>   
       <div className='optionBar__left'>
@@ -67,7 +46,7 @@ function OptionBar() {
         <button onClick={deleteRecord} disabled={!selection} className="optionBar__btn btn fas fa-trash-alt" data-toggle="tooltip" data-placement="bottom" title="Delete"></button>
         
         {(pathname === '/customers' || pathname === '/sellers') &&  // display the disable user button only for the customer and seller pages.
-          <button onClick={disableUser} disabled={!selection} className="optionBar__btn btn fas fa-user-slash" data-toggle="tooltip" data-placement="bottom" title="Disable User"></button>
+          <button onClick={() => disableUser(selection, tableName, userStatus)} disabled={!selection} className="optionBar__btn btn fas fa-user-slash" data-toggle="tooltip" data-placement="bottom" title="Disable User"></button>
         }
         
         {pathname === '/products' &&   // display the view images button only for products page.
