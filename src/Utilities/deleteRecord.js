@@ -1,5 +1,6 @@
 import db, { storage } from "../firebase";
-import { deleteFromIndex } from './indexing';
+import axios from "axios";
+// import { deleteFromIndex } from './indexing';
 
 const deleteProduct = (id, images) => {
   
@@ -10,9 +11,10 @@ const deleteProduct = (id, images) => {
       db.doc(`products/${id}`)                        // i.e delete the record from the database.
         .delete()
         .then(() => {
-          console.log('Delete Successful')
-          deleteFromIndex(id);      
+          // deleteFromIndex(id);      
+          return axios.delete(`https://tybca-project-api.herokuapp.com/algolia/${id}`);
         })
+        .then(() => console.log('Delete Successful'))
         .catch(error => console.log(error));
     });
   }

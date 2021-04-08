@@ -6,4 +6,13 @@ const deselectRecord = () => ({ type: 'DESELECT_RECORD' });
 const setPrevImages = images => 
   ({ type: 'SET_PREVIEW_IMAGES', payload: { images } });
 
-export { selectRecord, deselectRecord, setPrevImages };
+const setUserStatus = disabled => 
+  ({ type: 'SET_USER_STATUS', payload: { disabled } });
+
+
+export { 
+  selectRecord, 
+  deselectRecord, 
+  setPrevImages, 
+  setUserStatus 
+};

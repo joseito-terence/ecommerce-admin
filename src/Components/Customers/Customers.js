@@ -40,7 +40,12 @@ function Customers() {
         </thead>
         <tbody>
           {customers.map(customer => (
-            <tr key={customer.uid} id={customer.id} className={`${selection === customer.id && 'tr-selected'}`}>
+            <tr 
+              key={customer.uid} 
+              id={customer.id} 
+              className={`${selection === customer.id && 'tr-selected'}`}
+              data-disabled={`${customer?.disabled}`}
+            >
               <td>{customer.uid}</td>
               <td>{customer.id}</td>
               <td>{customer.phno}</td>

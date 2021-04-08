@@ -31,11 +31,17 @@ function Sellers() {
             <th>Store No.</th>
             <th>Store Name</th>
             <th>City</th>
+            <th>Status</th>
           </tr>
         </thead>
         <tbody>
           {sellers.map(seller => (
-            <tr key={seller.id} id={seller.id} className={`${selection === seller.id && 'tr-selected'}`}>
+            <tr 
+              key={seller.id} 
+              id={seller.id} 
+              className={`${selection === seller.id && 'tr-selected'}`}
+              data-disabled={`${seller?.disabled}`}
+            >
               <td>{seller.id}</td>
               <td>{seller.email}</td>
               <td>{seller.phone}</td>
@@ -43,6 +49,7 @@ function Sellers() {
               <td>{seller.businessInfo.shopNo}</td>
               <td>{seller.businessInfo.storeName}</td>
               <td>{seller.businessInfo.city}</td>
+              <td>{seller?.disabled ? 'disabled' : 'Active'}</td>
             </tr>
           ))}
         </tbody>

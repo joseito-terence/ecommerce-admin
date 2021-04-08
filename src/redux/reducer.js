@@ -2,6 +2,7 @@ const initialState = {
   selection: '',
   tableName: '',
   productImages: [],
+  userStatus: false,      // option === 'disable' ? true : false;
 }
 
 const reducer = (state = initialState, action) => {
@@ -23,6 +24,12 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         productImages: JSON.parse(action.payload.images),
+      }
+
+    case 'SET_USER_STATUS':
+      return {
+        ...state, 
+        userStatus: action.payload.disabled,
       }
 
     default: return state;

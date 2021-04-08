@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Switch, Route, useLocation } from 'react-router-dom';
-import { selectRecord, setPrevImages } from './redux/actions';
+import { selectRecord, setPrevImages, setUserStatus } from './redux/actions';
 import { useDispatch } from 'react-redux';
 import './App.css';
 import SideNav from './Components/SideNav/';
@@ -23,11 +23,23 @@ function App() {
         const targetRow = e.target.parentElement
         const recordId = targetRow.id;                      // get recordId.
         dispatch(selectRecord(recordId, location.pathname.slice(1)));
+        
 
-        if (location.pathname === '/products') {
-          const images = targetRow.dataset.images;
-          dispatch(setPrevImages(images));
+        switch(location.pathname) {
+          case '/products':
+            const images = targetRow.dataset.images;
+            dispatch(setPrevImages(images));
+            break;
+          
+          case '/sellers':
+          case '/customers':
+            const disabled = targetRow.dataset.disabled;
+            dispatch(setUserStatus(disabled));
+            break; 
+
+          default: break;
         }
+
       }
     }
   }, [dispatch, location.pathname]);                      // execute effect everytime path changes.
