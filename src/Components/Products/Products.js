@@ -31,8 +31,8 @@ function Products() {
         <thead className='thead-sticky'>
           <tr>
             <th>Product Id</th>
-            <th>Title</th>
-            <th>Description</th>
+            <th style={{ minWidth: '200px' }}>Title</th>
+            <th  style={{ minWidth: '250px' }}>Description</th>
             <th>Category</th>
             <th>Price</th>
             <th>Stock</th>
@@ -49,7 +49,7 @@ function Products() {
           >
             <td>{product.id}</td>
             <td>{product.title}</td>
-            <td className='text-wrap' style={{ minWidth: '250px' }}>{product.description}</td>
+            <td className='text-wrap'>{product.description}</td>
             <td>{product.category}</td>
             <td>{product.price}</td>
             <td>{product.stock}</td>

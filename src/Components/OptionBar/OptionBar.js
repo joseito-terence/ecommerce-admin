@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLocation } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
-import { deselectRecord } from '../../redux/actions';
+import { deselectRecord, setSearchKey } from '../../redux/actions';
 import './OptionBar.css';
 import Modal from '../Modal';
 import ViewImages from './ViewImages';
@@ -38,6 +38,10 @@ function OptionBar() {
     }
   }
 
+  const onSearch = ({ target }) => {
+    dispatch(setSearchKey(target.value.toLowerCase()));
+  }
+
   return (
     <div className='optionBar'>   
       <div className='optionBar__left'>
@@ -62,7 +66,7 @@ function OptionBar() {
         </Modal>
 
         <div className="optionBar__search">
-          <input type="search" className="form-control" placeholder="Search..." />
+          <input type="search" className="form-control" placeholder="Search..." onChange={onSearch} />
         </div>
       </div>
     </div>

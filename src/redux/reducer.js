@@ -4,6 +4,7 @@ const initialState = {
   productImages: [],
   userStatus: false,      // option === 'disable' ? true : false;
   toastMessage: '',       // message to be displayed in the toast,
+  searchKey: '',          // search keyword to filter table content
 }
 
 const reducer = (state = initialState, action) => {
@@ -38,6 +39,12 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         toastMessage: action.payload.toastMessage,
+      }
+
+    case 'SET_SEARCH_KEYWORD':
+      return {
+        ...state,
+        searchKey: action.payload.searchKey,
       }
 
     default: return state;

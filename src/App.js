@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Switch, Route, useLocation } from 'react-router-dom';
 import { selectRecord, setPrevImages, setUserStatus } from './redux/actions';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import './App.css';
 import SideNav from './Components/SideNav/';
 
@@ -12,10 +12,12 @@ import Sellers from './Components/Sellers';
 import Customers from './Components/Customers';
 import OptionBar from './Components/OptionBar';
 import Toast from './Components/Toast';
+import { searchTableAndFilter } from './Utilities';
 
 function App() {
   let location = useLocation();
-  const dispatch = useDispatch();
+  const dispatch = useDispatch(); 
+  const searchKey = useSelector(state => state.searchKey);
 
   useEffect(() => {
     if(location.pathname !== '/'){
@@ -44,6 +46,12 @@ function App() {
       }
     }
   }, [dispatch, location.pathname]);                      // execute effect everytime path changes.
+
+  useEffect(() => {
+    if(location.pathname !== '/'){
+      searchTableAndFilter(searchKey);
+    }
+  }, [searchKey, location.pathname]);
 
 
   return (
