@@ -3,6 +3,7 @@ const initialState = {
   tableName: '',
   productImages: [],
   userStatus: false,      // option === 'disable' ? true : false;
+  toastMessage: '',       // message to be displayed in the toast,
 }
 
 const reducer = (state = initialState, action) => {
@@ -31,6 +32,12 @@ const reducer = (state = initialState, action) => {
       return {
         ...state, 
         userStatus: action.payload.disabled,
+      }
+
+    case 'SET_TOAST_MESSAGE':
+      return {
+        ...state,
+        toastMessage: action.payload.toastMessage,
       }
 
     default: return state;

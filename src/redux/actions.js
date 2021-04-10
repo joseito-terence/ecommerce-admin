@@ -9,10 +9,13 @@ const setPrevImages = images =>
 const setUserStatus = disabled => 
   ({ type: 'SET_USER_STATUS', payload: { disabled } });
 
+const setToastMessage = toastMessage => 
+  ({ type: 'SET_TOAST_MESSAGE', payload: { toastMessage } })
 
 export { 
   selectRecord, 
   deselectRecord, 
   setPrevImages, 
-  setUserStatus 
+  setUserStatus, 
+  setToastMessage,
 };

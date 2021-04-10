@@ -1,13 +1,16 @@
 import React from 'react';
 import './SideNav.css';
 import { Link, NavLink } from 'react-router-dom';
+import { ReactComponent as Logo } from '../../Assets/logo001SVG.svg';
 
 function SideNav() {
   return (
     <div className='sidenav'>
       <header>
         <Link to="/">
-          <img  className="header__logo" src="https://josephreisigl.files.wordpress.com/2015/08/amazonlogo.png" alt="logo" />
+          <div className="header__logo">
+            <Logo />
+          </div>
         </Link>
         <nav>
           <NavItem text="Products" link="/products" />

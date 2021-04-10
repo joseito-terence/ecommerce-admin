@@ -11,6 +11,7 @@ import Orders from './Components/Orders';
 import Sellers from './Components/Sellers';
 import Customers from './Components/Customers';
 import OptionBar from './Components/OptionBar';
+import Toast from './Components/Toast';
 
 function App() {
   let location = useLocation();
@@ -64,6 +65,8 @@ function App() {
           </Switch>
         </main>
       </div>
+
+      <Toast />
     </div>
   );
 }
