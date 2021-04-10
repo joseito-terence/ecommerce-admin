@@ -1,9 +1,9 @@
 import db, { storage } from "../firebase";
 import axios from "axios";
+import setMessage from './setMessage';
 // import { deleteFromIndex } from './indexing';
 
 const deleteProduct = (id, images) => {
-  
   if(window.confirm('Do you want to delete?')){
     let promises = images.map(image => storage.refFromURL(image).delete());   // map all the promises into an array
 
@@ -14,8 +14,8 @@ const deleteProduct = (id, images) => {
           // deleteFromIndex(id);      
           return axios.delete(`https://tybca-project-api.herokuapp.com/algolia/${id}`);
         })
-        .then(() => console.log('Delete Successful'))
-        .catch(error => console.log(error));
+        .then(() => setMessage('Delete Successful'))
+        .catch(error => setMessage(error));
     });
   }
 }
