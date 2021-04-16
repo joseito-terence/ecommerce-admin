@@ -61,6 +61,12 @@ function OptionBar() {
           </span>
         }
         
+        {pathname === '/promocodes' &&
+          <span data-toggle="tooltip" data-placement="bottom" title="Add Promocode">
+            <button className="optionBar__btn btn fas fa-plus" data-toggle="modal" data-target="#addPromocodeModal"></button>
+          </span>
+        }
+        
         <Modal id='previewImagesModal' title='Images (Preview)' className='d-none'>
           <ViewImages />
         </Modal>

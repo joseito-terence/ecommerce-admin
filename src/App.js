@@ -12,6 +12,7 @@ import Sellers from './Components/Sellers';
 import Customers from './Components/Customers';
 import OptionBar from './Components/OptionBar';
 import Toast from './Components/Toast';
+import Promocodes from './Components/Promocodes';
 import { searchTableAndFilter } from './Utilities';
 
 function App() {
@@ -65,6 +66,7 @@ function App() {
 
         <main className="content-frame" style={{ minHeight: location.pathname === '/' && '100vh' }}>
           <Switch>
+            <Route path='/promocodes' component={Promocodes} />
             <Route path='/sellers' component={Sellers} />
             <Route path='/customers' component={Customers} />
             <Route path='/orders' component={Orders} />

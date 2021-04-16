@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import db from "../../firebase";
-import "./Orders.css";
 import { useDispatch, useSelector } from 'react-redux';
 import { deselectRecord } from '../../redux/actions';
+import { dateToString } from "../../Utilities";
 
 function Orders() {
   const [orders, setOrders] = useState([]);
@@ -18,7 +18,7 @@ function Orders() {
           snap.docs.map((doc) => ({
             id: doc.id,
             ...doc.data(),
-            order_date: doc.data().order_date.toDate().toString().slice(0, 24),
+            order_date: dateToString(doc.data().order_date),
           }))
         )
       );

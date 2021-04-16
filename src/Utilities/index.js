@@ -2,6 +2,7 @@ import deleteProduct from "./deleteRecord";
 import { deleteUser, disableUser } from "./deleteDisableUser";
 import cancelOrder from './cancelOrder';
 import searchTableAndFilter from "./searchTableAndFilter";
+import dateToString from './dateToString';
 
 export {
   deleteProduct,
@@ -9,4 +10,5 @@ export {
   disableUser,
   cancelOrder,
   searchTableAndFilter,
+  dateToString,
 };

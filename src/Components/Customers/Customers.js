@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import db from "../../firebase";
-import './Customers.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { deselectRecord } from '../../redux/actions';
 

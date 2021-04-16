@@ -17,6 +17,7 @@ function SideNav() {
           <NavItem text="Orders" link="/orders" />
           <NavItem text="Customers" link="/customers" />
           <NavItem text="Sellers" link="/sellers" />
+          <NavItem text="Promocodes" link="/promocodes" />
         </nav>
       </header>   
 

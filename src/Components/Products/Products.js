@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import './Products.css';
 import db from '../../firebase';
 import { useDispatch, useSelector } from 'react-redux';
 import { deselectRecord } from '../../redux/actions';
@@ -11,7 +10,6 @@ function Products() {
 
   useEffect(() => {
     const unsubscribe = db.collection('products')
-      .limit(5)
       .onSnapshot(snap => {
         setProducts(
           snap.docs.map((doc) => 
