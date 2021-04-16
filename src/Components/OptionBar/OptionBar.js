@@ -5,7 +5,7 @@ import { deselectRecord, setSearchKey } from '../../redux/actions';
 import './OptionBar.css';
 import Modal from '../Modal';
 import ViewImages from './ViewImages';
-import { deleteProduct, deleteUser, disableUser, cancelOrder } from '../../Utilities';
+import { deleteProduct, deleteUser, disableUser, cancelOrder, deletePromocode } from '../../Utilities';
 
 function OptionBar() {
   const { pathname } = useLocation();
@@ -32,6 +32,10 @@ function OptionBar() {
       
       case '/orders':
         cancelOrder(selection);
+        break;
+
+      case '/promocodes':
+        deletePromocode(selection);
         break;
 
       default: break;
