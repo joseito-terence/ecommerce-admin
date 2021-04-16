@@ -37,6 +37,7 @@ function Promocodes() {
           <tr>
             <th style={{ width: '220px' }}>Date of Creation</th>
             <th>Code</th>
+            <th>Discount %</th>
             <th>Expiry (DateTime)</th>
           </tr>
         </thead>
@@ -45,7 +46,8 @@ function Promocodes() {
             <tr key={promocode.code} id={promocode.code} className={`${selection === promocode.code && 'tr-selected'}`}>
               <td>{promocode.created_on}</td>
               <td>{promocode.code}</td>
-              <td>{promocode.expiry}</td>
+              <td>{promocode.discount}</td>
+              <td>{`${promocode.expiryDate} ${promocode.expiryTime}`}</td>
             </tr>
           ))}
         </tbody>

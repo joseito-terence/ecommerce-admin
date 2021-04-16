@@ -5,7 +5,9 @@ import db from '../../../firebase';
 function AddPromocode() {
   const initialState = {
     code: '',
-    expiry: '', 
+    expiryDate: '',
+    expiryTime: '', 
+    discount: 0,
   }
   const [state, setState] = useState(initialState);
   const closeBtn = useRef();
@@ -33,12 +35,12 @@ function AddPromocode() {
         created_on: new Date(),
       })
       .then(() => {
-        setState(initialState);
         closeBtn.current.click();
+        setState(initialState);
       })        
       .catch(err => console.error(err));
   } 
-
+  
   return (
     <div className='addPromocode mx-3 mt-3'>
       <form onSubmit={handleSubmit}>
@@ -59,11 +61,30 @@ function AddPromocode() {
             <button type="button" className='btn btn-sm btn-outline-secondary py-0' onClick={generateCode}>Generate</button>
           </div>
         </div>
-        
+
         <div className="form-group">
-          <label htmlFor="expiry">Expiry <span className="text-muted">(Date &amp; time)</span> </label>
-          <input type="datetime-local" id="expiry" className="form-control" value={state.expiry} onChange={handleChange} required />
+          <label htmlFor="discount">Discount %</label>
+          <input type="number" id="discount" className="form-control" value={state.discount} onChange={handleChange} required />
         </div>
+        
+        <div className=''>
+          <label>Expiry</label> <br />
+
+          <div className="container-sm m-0 p-0">
+            <div className="row">
+              <div className='col'>
+                <label htmlFor="expiryDate">Date</label>
+                <input type="date" id="expiryDate" className="form-control" value={state.expiryDate} onChange={handleChange} required />
+              </div>
+              <div className='col'>
+                <label htmlFor="expiryTime">Time</label>
+                <input type="time" id="expiryTime" className="form-control" value={state.expiryTime} onChange={handleChange} required />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        
 
         
         <div className="modal-footer m-0 px-0 py-1 mt-4">
