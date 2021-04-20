@@ -1,0 +1,37 @@
+.login{
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  width: 100vw;
+} 
+
+.login .container{
+  max-width: 720px;
+}
+
+.login .col{
+  padding: 0;
+  background-color: #e0e0e0;
+}
+
+.login .col:nth-child(2) {
+  background-color: var(--primary-accent);
+}
+
+.login__form{
+  padding: 14px;
+  background-color: #e0e0e0;
+  /* min-width: 400px;
+  max-width: 550px; */
+  z-index: 1;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#admin-svg {
+  height: 100%;
+  width: 100%;
+}

@@ -15,6 +15,9 @@ const setToastMessage = toastMessage =>
 const setSearchKey = searchKey => 
   ({ type: 'SET_SEARCH_KEYWORD', payload: { searchKey } });
 
+const changeAuthState = authUser => 
+  ({ type: 'CHANGE_AUTH_STATE', payload: { authUser } });
+
 export { 
   selectRecord, 
   deselectRecord, 
@@ -22,4 +25,5 @@ export {
   setUserStatus, 
   setToastMessage,
   setSearchKey,
+  changeAuthState,
 };

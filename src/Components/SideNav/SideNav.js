@@ -1,9 +1,20 @@
 import React from 'react';
 import './SideNav.css';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useHistory } from 'react-router-dom';
 import { ReactComponent as Logo } from '../../Assets/logo001SVG.svg';
+import { useDispatch } from 'react-redux';
+import { changeAuthState } from '../../redux/actions';
 
 function SideNav() {
+  const history = useHistory();
+  const dispatch = useDispatch();
+
+  const logout = () => {
+    dispatch(changeAuthState(null));
+    history.push('/');
+    localStorage.setItem('localStorage_authUser', null);
+  }
+
   return (
     <div className='sidenav'>
       <header>
@@ -22,7 +33,7 @@ function SideNav() {
       </header>   
 
       <footer>
-        <button className="fas fa-sign-out-alt btn btn-secondary w-100">
+        <button className="fas fa-sign-out-alt btn btn-secondary w-100" onClick={logout}>
           {' '} Logout
         </button>
       </footer>

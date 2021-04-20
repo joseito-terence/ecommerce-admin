@@ -5,6 +5,7 @@ const initialState = {
   userStatus: false,      // option === 'disable' ? true : false;
   toastMessage: '',       // message to be displayed in the toast,
   searchKey: '',          // search keyword to filter table content
+  authUser: null,
 }
 
 const reducer = (state = initialState, action) => {
@@ -19,7 +20,9 @@ const reducer = (state = initialState, action) => {
     case 'DESELECT_RECORD':
       return {
         ...state, 
-        ...initialState,
+        selection: '',
+        tableName: '',
+        productImages: [],
       }
 
     case 'SET_PREVIEW_IMAGES':
@@ -45,6 +48,12 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         searchKey: action.payload.searchKey,
+      }
+
+    case 'CHANGE_AUTH_STATE':
+      return {
+        ...state,
+        authUser: action.payload.authUser,
       }
 
     default: return state;
