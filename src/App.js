@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Switch, Route, useLocation, useHistory } from 'react-router-dom';
+import { Switch, Route, useLocation } from 'react-router-dom';
 import { changeAuthState, selectRecord, setPrevImages, setUserStatus } from './redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import './App.css';
@@ -23,7 +23,7 @@ function App() {
   const searchKey = useSelector(state => state.searchKey);
 
   useEffect(() => {
-    if(location.pathname !== '/' && authUser){
+    if(location.pathname !== '/'){
       const table = document.querySelector('table');        // get ref to the table.
       table.onclick = e => {                                // onClick event listener on the table.
         const targetRow = e.target.parentElement
@@ -51,18 +51,17 @@ function App() {
   }, [dispatch, location.pathname]);                      // execute effect everytime path changes.
 
   useEffect(() => {
-    if(location.pathname !== '/' && authUser){
+    if(location.pathname !== '/'){
       searchTableAndFilter(searchKey);
     }
   }, [searchKey, location.pathname]);
 
   useEffect(() => {
     const localStorage_authUser = localStorage.getItem('localStorage_authUser');
-    
-    if(localStorage_authUser) {
+    if(localStorage_authUser && localStorage_authUser !== 'null') {
       dispatch(changeAuthState({ username: localStorage_authUser }));
     }
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="App">
