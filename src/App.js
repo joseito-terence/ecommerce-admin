@@ -25,7 +25,7 @@ function App() {
   useEffect(() => {
     if(location.pathname !== '/'){
       const table = document.querySelector('table');        // get ref to the table.
-      
+      try {
         table.onclick = e => {                                // onClick event listener on the table.
           const targetRow = e.target.parentElement
           const recordId = targetRow.id;                      // get recordId.
@@ -47,7 +47,10 @@ function App() {
             default: break;
           }
         }
-      
+      }
+      catch (e) {
+        console.error(e);
+      } 
     }
   }, [dispatch, location.pathname]);                      // execute effect everytime path changes.
 
