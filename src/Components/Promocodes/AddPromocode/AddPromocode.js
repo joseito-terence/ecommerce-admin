@@ -11,6 +11,7 @@ function AddPromocode() {
   }
   const [state, setState] = useState(initialState);
   const closeBtn = useRef();
+  const discountFieldRef = useRef();
 
   const handleChange = ({ target }) => {
     setState({ ...state, [target.id]: target.value });
@@ -28,6 +29,10 @@ function AddPromocode() {
 
   const handleSubmit = event => {
     event.preventDefault();
+    // if(Number(state.discount) <= 0){
+    //   discountFieldRef.current.setCustomValidity('Should be greater than 0');
+    //   return;
+    // }
 
     db.doc(`promocodes/${state.code}`)
       .set({
@@ -64,7 +69,7 @@ function AddPromocode() {
 
         <div className="form-group">
           <label htmlFor="discount">Discount %</label>
-          <input type="number" id="discount" className="form-control" value={state.discount} onChange={handleChange} required />
+          <input type="number" id="discount" className="form-control" min={1} max={100} value={state.discount} onChange={handleChange} ref={discountFieldRef} required />
         </div>
         
         <div className=''>
@@ -84,9 +89,7 @@ function AddPromocode() {
           </div>
         </div>
 
-        
-
-        
+             
         <div className="modal-footer m-0 px-0 py-1 mt-4">
           <button ref={closeBtn} type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
           <button type="submit" className="btn btn-primary">Submit</button>

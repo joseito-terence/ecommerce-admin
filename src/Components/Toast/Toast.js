@@ -15,15 +15,15 @@ function Toast() {
   }
 
   return message && (
-    <div class="position-fixed bottom-0 right-0 p-3" style={{ zindex: 5, right: 0, bottom: 0, }}>
-      <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true" data-delay="2000">
-        <div class="toast-header">
-          <strong class="mr-auto">Message</strong>
-          <button type="button" onClick={closeToast} class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+    <div className="position-fixed bottom-0 right-0 p-3" style={{ zindex: 5, right: 0, bottom: 0, }}>
+      <div id="liveToast" className="toast show" role="alert" aria-live="assertive" aria-atomic="true" data-delay="2000">
+        <div className="toast-header">
+          <strong className="mr-auto">Message</strong>
+          <button type="button" onClick={closeToast} className="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="toast-body">
+        <div className="toast-body">
           {message}
         </div>
       </div>

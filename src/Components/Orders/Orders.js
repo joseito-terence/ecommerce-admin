@@ -16,8 +16,9 @@ function Orders() {
       .onSnapshot((snap) =>
         setOrders(
           snap.docs.map((doc) => ({
-            id: doc.id,
             ...doc.data(),
+            id: doc.id,
+            productId: doc.data().id,
             order_date: dateToString(doc.data().order_date),
           }))
         )
@@ -35,10 +36,12 @@ function Orders() {
         <thead className="thead-sticky">
           <tr>
             <th>Order Id</th>
-            <th>Order Date</th>
-            <th>Title</th>
+            <th style={{ minWidth: '218px' }}>Order Date</th>
+            <th style={{ minWidth: '218px' }}>Title</th>
             <th>Qty</th>
+            <th>Product Id</th>
             <th>Customer Id</th>
+            <th>Payment Id</th>
             <th>Status</th>
           </tr>
         </thead>
@@ -49,7 +52,9 @@ function Orders() {
               <td>{order.order_date}</td>
               <td>{order.title}</td>
               <td>{order.qty}</td>
+              <td>{order.productId}</td>
               <td>{order.customerId}</td>
+              <td>{order.razorpay_payment_id}</td>
               <td>{!order?.status ? 'Order Placed' : 'Canceled'}</td>
             </tr>
           ))}

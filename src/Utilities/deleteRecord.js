@@ -1,6 +1,7 @@
 import db, { storage } from "../firebase";
 import axios from "axios";
 import setMessage from './setMessage';
+import API_URL from "../API_URL";
 // import { deleteFromIndex } from './indexing';
 
 const deleteProduct = (id, images) => {
@@ -12,10 +13,10 @@ const deleteProduct = (id, images) => {
         .delete()
         .then(() => {
           // deleteFromIndex(id);      
-          return axios.delete(`https://tybca-project-api.herokuapp.com/algolia/${id}`);
+          return axios.delete(`${API_URL}/algolia/${id}`);
         })
         .then(() => setMessage('Delete Successful'))
-        .catch(error => setMessage(error));
+        .catch(() => setMessage('Unable to Delete Product.'));
     });
   }
 }

@@ -25,28 +25,29 @@ function App() {
   useEffect(() => {
     if(location.pathname !== '/'){
       const table = document.querySelector('table');        // get ref to the table.
-      table.onclick = e => {                                // onClick event listener on the table.
-        const targetRow = e.target.parentElement
-        const recordId = targetRow.id;                      // get recordId.
-        dispatch(selectRecord(recordId, location.pathname.slice(1)));
-        
-
-        switch(location.pathname) {
-          case '/products':
-            const images = targetRow.dataset.images;
-            dispatch(setPrevImages(images));
-            break;
+      
+        table.onclick = e => {                                // onClick event listener on the table.
+          const targetRow = e.target.parentElement
+          const recordId = targetRow.id;                      // get recordId.
+          dispatch(selectRecord(recordId, location.pathname.slice(1)));
           
-          case '/sellers':
-          case '/customers':
-            const disabled = targetRow.dataset.disabled;
-            dispatch(setUserStatus(disabled));
-            break; 
-
-          default: break;
+  
+          switch(location.pathname) {
+            case '/products':
+              const images = targetRow.dataset.images;
+              dispatch(setPrevImages(images));
+              break;
+            
+            case '/sellers':
+            case '/customers':
+              const disabled = targetRow.dataset.disabled;
+              dispatch(setUserStatus(disabled));
+              break; 
+  
+            default: break;
+          }
         }
-
-      }
+      
     }
   }, [dispatch, location.pathname]);                      // execute effect everytime path changes.
 
