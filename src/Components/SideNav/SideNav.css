@@ -24,6 +24,8 @@
   object-fit: contain;
   border-radius: 50%;
   margin: 2.2rem auto;
+  border-radius: 50%;
+  overflow: hidden;
 }
 
 .sidenav__link-active,

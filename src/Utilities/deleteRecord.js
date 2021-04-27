@@ -15,7 +15,7 @@ const deleteProduct = (id, images) => {
           // deleteFromIndex(id);      
           return axios.delete(`${API_URL}/algolia/${id}`);
         })
-        .then(() => setMessage('Delete Successful'))
+        .then(() => setMessage('Product successfully Deleted.'))
         .catch(() => setMessage('Unable to Delete Product.'));
     });
   }
