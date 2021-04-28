@@ -18,6 +18,9 @@ const setSearchKey = searchKey =>
 const changeAuthState = authUser => 
   ({ type: 'CHANGE_AUTH_STATE', payload: { authUser } });
 
+const setLoadingState = loading => 
+  ({ type: 'SET_LOADING', payload: { loading } });
+
 export { 
   selectRecord, 
   deselectRecord, 
@@ -26,4 +29,5 @@ export {
   setToastMessage,
   setSearchKey,
   changeAuthState,
+  setLoadingState,
 };

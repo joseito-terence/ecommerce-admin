@@ -15,6 +15,7 @@ import OptionBar from './Components/OptionBar';
 import Toast from './Components/Toast';
 import Promocodes from './Components/Promocodes';
 import Login from './Components/Login';
+import Preloader from './Components/Preloader';
 
 function App() {
   let location = useLocation();
@@ -89,7 +90,8 @@ function App() {
               </Switch>
             </main>
           </div>
-
+          
+          <Preloader />
           <Toast />
         </>
       ) : (

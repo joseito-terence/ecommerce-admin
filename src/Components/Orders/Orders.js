@@ -55,7 +55,7 @@ function Orders() {
               <td>{order.productId}</td>
               <td>{order.customerId}</td>
               <td>{order.razorpay_payment_id}</td>
-              <td>{!order?.status ? 'Order Placed' : 'Canceled'}</td>
+              <td>{!order?.status ? 'Order Placed' : 'Cancelled'}</td>
             </tr>
           ))}
         </tbody>

@@ -6,6 +6,7 @@ const initialState = {
   toastMessage: '',       // message to be displayed in the toast,
   searchKey: '',          // search keyword to filter table content
   authUser: null,
+  loading: false,         // to display loader for async backend api calls.
 }
 
 const reducer = (state = initialState, action) => {
@@ -54,6 +55,12 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         authUser: action.payload.authUser,
+      }
+
+    case 'SET_LOADING':
+      return {
+        ...state,
+        loading: action.payload.loading,
       }
 
     default: return state;
